@@ -39,7 +39,7 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
-            display: none; /* Comienza oculta */
+            display: flex; /* Mostrar la ventana emergente */
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -73,10 +73,17 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
-        /* Estilos para el enlace */
+        /* Estilo para el enlace de cookies */
         .cookie-link {
             color: #007bff;
             text-decoration: none;
+        }
+        /* Estilo para la casilla de aceptación */
+        .checkbox-label {
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 10px;
+            display: block;
         }
     </style>
 </head>
@@ -97,7 +104,7 @@
     <div id="popup" class="popup">
         <div class="popup-content">
             <h3>Aceptación de Cookies</h3>
-            <p>Para continuar, necesitamos que aceptes las cookies:</p>
+            <p>Para continuar, necesitamos que aceptes las cookies y nos proporciones tus datos:</p>
             <form id="cookie-form">
                 <input type="text" id="name" placeholder="Tu nombre" required>
                 <input type="email" id="email" placeholder="Tu correo electrónico" required>
@@ -105,7 +112,7 @@
                 <br><br>
 
                 <!-- Checkbox para aceptación de cookies -->
-                <label>
+                <label class="checkbox-label">
                     <input type="checkbox" id="cookies-accept" onchange="togglePDFLink()"> 
                     Acepto el uso de cookies según nuestra <a href="enlace-a-politica-de-cookies" class="cookie-link" target="_blank">Política de Cookies</a>.
                 </label>
