@@ -5,7 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Refill</title>
     <style>
-        /* Tus estilos permanecen iguales */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+        #pdf-links {
+            margin-top: 20px;
+        }
+        #pdf-links a {
+            display: block;
+            margin: 5px 0;
+            color: #0056b3;
+            text-decoration: none;
+        }
+        #pdf-links a:hover {
+            text-decoration: underline;
+        }
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .popup-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .popup-content h3 {
+            margin-top: 0;
+        }
+        .popup-content form {
+            margin-top: 15px;
+        }
+        .popup-content input[type="text"],
+        .popup-content input[type="email"],
+        .popup-content input[type="tel"] {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .popup-content button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .popup-content button:hover {
+            background: #0056b3;
+            color: #fff;
+        }
+        .reject {
+            background: #ccc;
+        }
     </style>
 </head>
 <body>
@@ -13,7 +91,6 @@
         <h1>Política de Refill</h1>
         <p>Políticas de Refill:</p>
 
-        <!-- Asegúrate de que los títulos sean correctos -->
         <div id="pdf-links" style="display:none;">
             <a href="https://drive.google.com/file/d/1AtXs8vuTLZLbP2VFZTMLdW0iXdi3-Llg/view?usp=sharing" target="_blank">Refill T2</a><br>
             <a href="https://drive.google.com/file/d/1SfTbPhCgzQHyTsIhPvndAFGMcOVQEN_m/view?usp=sharing" target="_blank">Vinilo Fino</a><br>
@@ -22,7 +99,6 @@
         </div>
     </div>
 
-    <!-- Ventana emergente para aceptar cookies -->
     <div id="popup" class="popup">
         <div class="popup-content">
             <h3>Aceptación de Cookies</h3>
@@ -33,7 +109,6 @@
                 <input type="tel" id="phone" placeholder="Tu número de teléfono" required>
                 <br><br>
 
-                <!-- Checkbox para aceptación de cookies -->
                 <label class="checkbox-label">
                     <input type="checkbox" id="cookies-accept" onchange="togglePDFLinks()"> 
                     Acepto el uso de cookies según nuestra 
@@ -48,24 +123,21 @@
     </div>
 
     <script>
-        // Mostrar la ventana emergente cuando la página carga
         window.onload = function() {
-            document.getElementById("popup").style.display = "flex"; // Mostrar popup
+            document.getElementById("popup").style.display = "flex";
         }
 
-        // Función para habilitar los enlaces al PDF solo si se marca el checkbox
         function togglePDFLinks() {
             const checkBox = document.getElementById("cookies-accept");
             const pdfLinks = document.getElementById("pdf-links");
 
             if (checkBox.checked) {
-                pdfLinks.style.display = "block"; // Mostrar los enlaces al PDF
+                pdfLinks.style.display = "block";
             } else {
-                pdfLinks.style.display = "none"; // Ocultar los enlaces al PDF
+                pdfLinks.style.display = "none";
             }
         }
 
-        // Función para aceptar las cookies
         function aceptar() {
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
@@ -74,13 +146,12 @@
 
             if (name && email && phone && checkBox.checked) {
                 alert("Gracias por aceptar las cookies. Tus datos han sido registrados.");
-                document.getElementById("popup").style.display = "none"; // Cerrar el popup
+                document.getElementById("popup").style.display = "none";
             } else {
                 alert("Por favor, completa todos los campos y acepta las cookies.");
             }
         }
 
-        // Función para rechazar las cookies
         function rechazar() {
             alert("No puedes continuar sin aceptar las cookies.");
         }
