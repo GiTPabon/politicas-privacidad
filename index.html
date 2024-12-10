@@ -39,7 +39,7 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
-            display: flex;
+            display: none; /* Comienza oculta */
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -102,7 +102,7 @@
     <script>
         // Mostrar la ventana emergente cuando la página carga
         window.onload = function() {
-            document.getElementById("popup").style.display = "flex";
+            document.getElementById("popup").style.display = "flex"; // Mostrar popup
         }
 
         // Función para aceptar las cookies y enviar el formulario
@@ -128,3 +128,4 @@
     </script>
 </body>
 </html>
+
