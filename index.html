@@ -39,7 +39,7 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
-            display: flex; /* Mostrar la ventana emergente */
+            display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -73,11 +73,6 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
-        /* Estilo para el enlace de cookies */
-        .cookie-link {
-            color: #007bff;
-            text-decoration: none;
-        }
         /* Estilo para la casilla de aceptación */
         .checkbox-label {
             font-size: 14px;
@@ -92,16 +87,13 @@
         <h1>Política de Privacidad</h1>
         <p>Para ver la Política de Privacidad, por favor, acepta las cookies:</p>
 
-        <!-- Enlace al PDF, inicialmente deshabilitado -->
-        <a id="pdf-link" href="https://drive.google.com/file/d/1AtXs8vuTLZLbP2VFZTMLdW0iXdi3-Llg/view?usp=sharing" target="_blank" style="display:none;">
-            Ver Política Corriente T2 PDF
-            <a id="pdf-link" href="https://drive.google.com/file/d/1SfTbPhCgzQHyTsIhPvndAFGMcOVQEN_m/view?usp=sharing" target="_blank" style="display:none;">
-                Ver Política Vinilo Fino PDF
-                <a id="pdf-link" href="https://drive.google.com/file/d/1hwWfMHgSiYMidlqatT8gNzWOYyIkb_Xo/view?usp=sharing" target="_blank" style="display:none;">
-                    Ver Política Vinilo Básico T1 PDF
-                    <a id="pdf-link" href="https://drive.google.com/file/d/1899Y3zUu9JBMEEbKgVBBo579KuHMP7PD/view?usp=sharing" target="_blank" style="display:none;">
-                        Ver Política Vinilo Básico T2 PDF
-        </a>
+        <!-- Lista de enlaces con títulos visibles -->
+        <div id="pdf-links" style="display:none;">
+            <a href="https://drive.google.com/file/d/1AtXs8vuTLZLbP2VFZTMLdW0iXdi3-Llg/view?usp=sharing" target="_blank">Política Corriente T2</a><br>
+            <a href="https://drive.google.com/file/d/1SfTbPhCgzQHyTsIhPvndAFGMcOVQEN_m/view?usp=sharing" target="_blank">Política Vinilo Fino</a><br>
+            <a href="https://drive.google.com/file/d/1hwWfMHgSiYMidlqatT8gNzWOYyIkb_Xo/view?usp=sharing" target="_blank">Política Vinilo Básico T1</a><br>
+            <a href="https://drive.google.com/file/d/1899Y3zUu9JBMEEbKgVBBo579KuHMP7PD/view?usp=sharing" target="_blank">Política Vinilo Básico T2</a>
+        </div>
 
         <!-- Código QR -->
         <p>Escanea el QR:</p>
@@ -121,7 +113,7 @@
 
                 <!-- Checkbox para aceptación de cookies -->
                 <label class="checkbox-label">
-                    <input type="checkbox" id="cookies-accept" onchange="togglePDFLink()"> 
+                    <input type="checkbox" id="cookies-accept" onchange="togglePDFLinks()"> 
                     Acepto el uso de cookies según nuestra 
                     <a href="https://docs.google.com/document/d/1y-UOpVcJoe0Y15vimi9ixdbkx5S-FqAu/view" target="_blank">Política de Cookies</a>
                 </label>
@@ -139,19 +131,19 @@
             document.getElementById("popup").style.display = "flex"; // Mostrar popup
         }
 
-        // Función para habilitar el enlace al PDF solo si se marca el checkbox
-        function togglePDFLink() {
+        // Función para habilitar los enlaces al PDF solo si se marca el checkbox
+        function togglePDFLinks() {
             const checkBox = document.getElementById("cookies-accept");
-            const pdfLink = document.getElementById("pdf-link");
+            const pdfLinks = document.getElementById("pdf-links");
 
             if (checkBox.checked) {
-                pdfLink.style.display = "inline"; // Mostrar el enlace al PDF
+                pdfLinks.style.display = "block"; // Mostrar los enlaces al PDF
             } else {
-                pdfLink.style.display = "none"; // Ocultar el enlace al PDF
+                pdfLinks.style.display = "none"; // Ocultar los enlaces al PDF
             }
         }
 
-        // Función para aceptar las cookies y enviar el formulario
+        // Función para aceptar las cookies
         function aceptar() {
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
@@ -169,7 +161,6 @@
         // Función para rechazar las cookies
         function rechazar() {
             alert("No puedes continuar sin aceptar las cookies.");
-            // Aquí podrías redirigir a otro sitio o bloquear contenido
         }
     </script>
 </body>
