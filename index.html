@@ -31,7 +31,6 @@
             margin-top: 20px;
             width: 150px;
         }
-        /* Estilos para la ventana emergente */
         .popup {
             position: fixed;
             top: 0;
@@ -39,7 +38,7 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
-            display: none; /* Comienza oculta */
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -69,18 +68,38 @@
         .popup button.reject {
             background-color: #dc3545;
         }
+        /* Estilos para el checkbox */
+        .terms {
+            margin-top: 20px;
+        }
+        .terms input {
+            margin-right: 10px;
+        }
+        .terms a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .terms a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Política de Privacidad</h1>
         <p>Haz clic en el enlace o escanea el código QR para ver el documento:</p>
-        <!-- Enlace al PDF -->
-        <a href="Politica%20de%20Venta%20Refill%20PTP%202024%20Consumidor%20Final%20Corriente%20T2.pdf" target="_blank">Ver Política PDF</a>
+        <!-- Enlace al PDF (deshabilitado inicialmente) -->
+        <a id="pdf-link" href="Politica%20de%20Venta%20Refill%20PTP%202024%20Consumidor%20Final%20Corriente%20T2.pdf" target="_blank" style="pointer-events: none; color: #ccc;">Ver Política PDF</a>
 
-        <!-- Código QR -->
+        <!-- Código QR (deshabilitado inicialmente) -->
         <p>Escanea el QR:</p>
-        <img src="t2.qr.png" alt="Código QR">
+        <img id="qr-image" src="t2.qr.png" alt="Código QR" style="pointer-events: none; opacity: 0.5;">
+
+        <!-- Checkbox para aceptar términos y condiciones -->
+        <div class="terms">
+            <input type="checkbox" id="accept-terms" onclick="toggleLinks()">
+            <label for="accept-terms">Acepto los <a href="terminos_y_condiciones.html" target="_blank">términos y condiciones</a></label>
+        </div>
     </div>
 
     <!-- Ventana emergente para aceptar cookies -->
@@ -100,6 +119,25 @@
     </div>
 
     <script>
+        // Función para habilitar los enlaces solo si se acepta los términos
+        function toggleLinks() {
+            const acceptTermsCheckbox = document.getElementById("accept-terms");
+            const pdfLink = document.getElementById("pdf-link");
+            const qrImage = document.getElementById("qr-image");
+
+            if (acceptTermsCheckbox.checked) {
+                pdfLink.style.pointerEvents = "auto";  // Habilitar enlace PDF
+                pdfLink.style.color = "#007bff";  // Cambiar color del enlace
+                qrImage.style.pointerEvents = "auto";  // Habilitar imagen QR
+                qrImage.style.opacity = 1;  // Restaurar opacidad de la imagen
+            } else {
+                pdfLink.style.pointerEvents = "none";  // Deshabilitar enlace PDF
+                pdfLink.style.color = "#ccc";  // Cambiar color del enlace a gris
+                qrImage.style.pointerEvents = "none";  // Deshabilitar imagen QR
+                qrImage.style.opacity = 0.5;  // Reducir opacidad de la imagen
+            }
+        }
+
         // Mostrar la ventana emergente cuando la página carga
         window.onload = function() {
             document.getElementById("popup").style.display = "flex"; // Mostrar popup
@@ -128,4 +166,3 @@
     </script>
 </body>
 </html>
-
