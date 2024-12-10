@@ -6,36 +6,47 @@
     <title>Política de Refill</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f0f8ff;
             color: #333;
         }
         .container {
             max-width: 800px;
-            margin: 30px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         h1 {
             color: #0056b3;
             text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            text-align: center;
         }
         #pdf-links {
-            margin-top: 20px;
+            margin-top: 25px;
+            text-align: center;
         }
         #pdf-links a {
-            display: block;
-            margin: 5px 0;
-            color: #0056b3;
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 15px;
+            background-color: #0056b3;
+            color: #fff;
             text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
         #pdf-links a:hover {
-            text-decoration: underline;
+            background-color: #003d80;
         }
         .popup {
             position: fixed;
@@ -50,13 +61,21 @@
         }
         .popup-content {
             background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
+            max-width: 500px;
+            width: 90%;
         }
         .popup-content h3 {
+            color: #0056b3;
             margin-top: 0;
+            font-size: 1.5em;
+        }
+        .popup-content p {
+            font-size: 1em;
+            margin-bottom: 15px;
         }
         .popup-content form {
             margin-top: 15px;
@@ -65,10 +84,11 @@
         .popup-content input[type="email"],
         .popup-content input[type="tel"] {
             width: calc(100% - 20px);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 1em;
         }
         .popup-content button {
             padding: 10px 20px;
@@ -76,6 +96,8 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
         }
         .popup-content button:hover {
             background: #0056b3;
@@ -83,18 +105,33 @@
         }
         .reject {
             background: #ccc;
+            color: #333;
+        }
+        .reject:hover {
+            background: #999;
+        }
+        .checkbox-label {
+            font-size: 0.9em;
+            color: #555;
+        }
+        .checkbox-label a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        .checkbox-label a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Política de Refill</h1>
-        <p>Políticas de Refill:</p>
+        <p>Consulta nuestras políticas de refill para más información.</p>
 
         <div id="pdf-links" style="display:none;">
-            <a href="https://drive.google.com/file/d/1AtXs8vuTLZLbP2VFZTMLdW0iXdi3-Llg/view?usp=sharing" target="_blank">Refill T2</a><br>
-            <a href="https://drive.google.com/file/d/1SfTbPhCgzQHyTsIhPvndAFGMcOVQEN_m/view?usp=sharing" target="_blank">Vinilo Fino</a><br>
-            <a href="https://drive.google.com/file/d/1hwWfMHgSiYMidlqatT8gNzWOYyIkb_Xo/view?usp=sharing" target="_blank">Vinilo Básico T1</a><br>
+            <a href="https://drive.google.com/file/d/1AtXs8vuTLZLbP2VFZTMLdW0iXdi3-Llg/view?usp=sharing" target="_blank">Refill T2</a>
+            <a href="https://drive.google.com/file/d/1SfTbPhCgzQHyTsIhPvndAFGMcOVQEN_m/view?usp=sharing" target="_blank">Vinilo Fino</a>
+            <a href="https://drive.google.com/file/d/1hwWfMHgSiYMidlqatT8gNzWOYyIkb_Xo/view?usp=sharing" target="_blank">Vinilo Básico T1</a>
             <a href="https://drive.google.com/file/d/1899Y3zUu9JBMEEbKgVBBo579KuHMP7PD/view?usp=sharing" target="_blank">Vinilo Básico T2</a>
         </div>
     </div>
@@ -107,7 +144,6 @@
                 <input type="text" id="name" placeholder="Tu nombre" required>
                 <input type="email" id="email" placeholder="Tu correo electrónico" required>
                 <input type="tel" id="phone" placeholder="Tu número de teléfono" required>
-                <br><br>
 
                 <label class="checkbox-label">
                     <input type="checkbox" id="cookies-accept" onchange="togglePDFLinks()"> 
