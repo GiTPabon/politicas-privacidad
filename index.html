@@ -34,19 +34,20 @@
         #pdf-links {
             margin-top: 25px;
             text-align: center;
+            display: none;
         }
         #pdf-links a {
             display: inline-block;
             margin: 10px 5px;
             padding: 10px 15px;
             background-color: #e40b0b;
-            color: #000;
+            color: #fff;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
         }
         #pdf-links a:hover {
-            background-color: #e40b0b;
+            background-color: #b71c1c;
         }
         .popup {
             position: fixed;
@@ -99,17 +100,17 @@
             font-size: 1em;
             transition: background-color 0.3s;
             background-color: #e40b0b;
-            color: #000;
+            color: #fff;
         }
         .popup-content button:hover {
-            background: #e40b0b;
+            background-color: #b71c1c;
         }
         .reject {
-            background: #ccc;
+            background-color: #ccc;
             color: #333;
         }
         .reject:hover {
-            background: #999;
+            background-color: #999;
         }
         .checkbox-label {
             font-size: 0.9em;
@@ -129,7 +130,7 @@
         <h1>Política de Refill</h1>
         <p>Consulta nuestras políticas de refill para más información.</p>
 
-        <div id="pdf-links" style="display:none;">
+        <div id="pdf-links">
             <a href="https://drive.google.com/file/d/1AtXs8vuTLZLbP2VFZTMLdW0iXdi3-Llg/view?usp=sharing" target="_blank">Refill T2</a>
             <a href="https://drive.google.com/file/d/1SfTbPhCgzQHyTsIhPvndAFGMcOVQEN_m/view?usp=sharing" target="_blank">Vinilo Fino</a>
             <a href="https://drive.google.com/file/d/1hwWfMHgSiYMidlqatT8gNzWOYyIkb_Xo/view?usp=sharing" target="_blank">Vinilo Básico T1</a>
@@ -148,19 +149,18 @@
                 <input type="text" id="lote" placeholder="Número de lote" required>
                 <input type="text" id="cantidad" placeholder="Cantidad" required>
 
-            <label class="checkbox-label">
-                <input type="checkbox" id="cookies-accept" onchange="togglePDFLink()" 
-                Acepto el uso de cookies según nuestra 
-                <a href="https://docs.google.com/document/d/1y-UOpVcJoe0Y15vimi9ixdbkx5S-FqAu/view" target="_blank">Política De Cookies</a>
-            </label>
-            <br>
-->
-            <label class="checkbox-label">
-                <input type="checkbox" id="refill-accept" onchange="togglePDFLink()"> 
-                Acepto el uso según nuestra 
-                <a href="https://docs.google.com/document/d/1e3DSTyVgJwu4U9DZPcp3JIuVhd1v-jQ5/edit?usp=sharing&ouid=105575938843934985702&rtpof=true&sd=true" target="_blank">Política De Refill</a>
-            </label>
-            <br><br>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="cookies-accept" onchange="togglePDFLink()"> 
+                    Acepto el uso de cookies según nuestra 
+                    <a href="https://docs.google.com/document/d/1y-UOpVcJoe0Y15vimi9ixdbkx5S-FqAu/view" target="_blank">Política De Cookies</a>
+                </label>
+                <br>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="refill-accept" onchange="togglePDFLink()"> 
+                    Acepto el uso según nuestra 
+                    <a href="https://docs.google.com/document/d/1e3DSTyVgJwu4U9DZPcp3JIuVhd1v-jQ5/edit?usp=sharing&ouid=105575938843934985702&rtpof=true&sd=true" target="_blank">Política De Refill</a>
+                </label>
+                <br><br>
                 <button type="button" onclick="aceptar()">Aceptar</button>
                 <button type="button" class="reject" onclick="rechazar()">Rechazar</button>
             </form>
@@ -172,7 +172,7 @@
             document.getElementById("popup").style.display = "flex";
         }
 
-        function togglePDFLinks() {
+        function togglePDFLink() {
             const checkBox = document.getElementById("cookies-accept");
             const pdfLinks = document.getElementById("pdf-links");
 
@@ -205,3 +205,4 @@
     </script>
 </body>
 </html>
+
