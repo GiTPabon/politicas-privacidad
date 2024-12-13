@@ -174,9 +174,10 @@
 
         function togglePDFLink() {
             const checkBox = document.getElementById("cookies-accept");
+            const refillBox = document.getElementById("refill-accept");
             const pdfLinks = document.getElementById("pdf-links");
 
-            if (checkBox.checked) {
+            if (checkBox.checked && refillBox.checked) {
                 pdfLinks.style.display = "block";
             } else {
                 pdfLinks.style.display = "none";
@@ -190,8 +191,9 @@
             const lote = document.getElementById("lote").value;
             const cantidad = document.getElementById("cantidad").value;
             const checkBox = document.getElementById("cookies-accept");
+            const refillBox = document.getElementById("refill-accept");
 
-            if (name && email && phone && lote && cantidad && checkBox.checked) {
+            if (name && email && phone && lote && cantidad && checkBox.checked && refillBox.checked) {
                 alert("Gracias por aceptar las cookies. Tus datos han sido registrados.");
                 document.getElementById("popup").style.display = "none";
             } else {
@@ -205,4 +207,3 @@
     </script>
 </body>
 </html>
-
