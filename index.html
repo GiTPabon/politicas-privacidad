@@ -34,20 +34,19 @@
         #pdf-links {
             margin-top: 25px;
             text-align: center;
-            display: none;
         }
         #pdf-links a {
             display: inline-block;
             margin: 10px 5px;
             padding: 10px 15px;
             background-color: #e40b0b;
-            color: #fff;
+            color: #000;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
         }
         #pdf-links a:hover {
-            background-color: #b71c1c;
+            background-color: #e40b0b;
         }
         .popup {
             position: fixed;
@@ -100,17 +99,17 @@
             font-size: 1em;
             transition: background-color 0.3s;
             background-color: #e40b0b;
-            color: #fff;
+            color: #000;
         }
         .popup-content button:hover {
-            background-color: #b71c1c;
+            background: #e40b0b;
         }
         .reject {
-            background-color: #ccc;
+            background: #ccc;
             color: #333;
         }
         .reject:hover {
-            background-color: #999;
+            background: #999;
         }
         .checkbox-label {
             font-size: 0.9em;
@@ -123,22 +122,23 @@
         .checkbox-label a:hover {
             text-decoration: underline;
         }
+        /* Estilo para el logo */
         .logo {
+            width: 150px;
             display: block;
-            margin: 0 auto 20px auto;
-            max-width: 200px; /* Ajusta el tamaño del logo */
+            margin: 0 auto 20px; /* Centra el logo y lo coloca en la parte superior */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Logo de la empresa -->
-        <img src="cropped-logo_pinturas_tito_pabon_favicon.png" alt="Logo de la empresa" class="logo"> <!-- Ruta al logo -->
+        <!-- Aquí se coloca el logo de la empresa -->
+        <img src="https://raw.githubusercontent.com/GiTPabon/politicas-privacidad/main/cropped-logo_pinturas_tito_pabon_favicon.png" alt="Logo de la empresa" class="logo">
 
         <h1>Política de Refill</h1>
         <p>Consulta nuestras políticas de refill para más información.</p>
 
-        <div id="pdf-links">
+        <div id="pdf-links" style="display:none;">
             <a href="https://drive.google.com/file/d/1AtXs8vuTLZLbP2VFZTMLdW0iXdi3-Llg/view?usp=sharing" target="_blank">Refill T2</a>
             <a href="https://drive.google.com/file/d/1SfTbPhCgzQHyTsIhPvndAFGMcOVQEN_m/view?usp=sharing" target="_blank">Vinilo Fino</a>
             <a href="https://drive.google.com/file/d/1hwWfMHgSiYMidlqatT8gNzWOYyIkb_Xo/view?usp=sharing" target="_blank">Vinilo Básico T1</a>
@@ -180,12 +180,11 @@
             document.getElementById("popup").style.display = "flex";
         }
 
-        function togglePDFLink() {
+        function togglePDFLinks() {
             const checkBox = document.getElementById("cookies-accept");
-            const refillBox = document.getElementById("refill-accept");
             const pdfLinks = document.getElementById("pdf-links");
 
-            if (checkBox.checked && refillBox.checked) {
+            if (checkBox.checked) {
                 pdfLinks.style.display = "block";
             } else {
                 pdfLinks.style.display = "none";
@@ -199,18 +198,17 @@
             const lote = document.getElementById("lote").value;
             const cantidad = document.getElementById("cantidad").value;
             const checkBox = document.getElementById("cookies-accept");
-            const refillBox = document.getElementById("refill-accept");
 
-            if (name && email && phone && lote && cantidad && checkBox.checked && refillBox.checked) {
+            if (name && email && phone && lote && cantidad && checkBox.checked) {
                 alert("Gracias por aceptar las cookies. Tus datos han sido registrados.");
                 document.getElementById("popup").style.display = "none";
             } else {
-                alert("Por favor, completa todos los campos y acepta las cookies.");
+                alert("Por favor, completa todos los campos y acepta las políticas.");
             }
         }
 
         function rechazar() {
-            alert("No puedes continuar sin aceptar las cookies.");
+            document.getElementById("popup").style.display = "none";
         }
     </script>
 </body>
