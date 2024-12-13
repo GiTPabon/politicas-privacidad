@@ -34,6 +34,7 @@
         #pdf-links {
             margin-top: 25px;
             text-align: center;
+            display: none; /* PDF links hidden initially */
         }
         #pdf-links a {
             display: inline-block;
@@ -99,14 +100,14 @@
             font-size: 1em;
             transition: background-color 0.3s;
             background-color: #e40b0b;
-            color: #fff; /* Cambié de negro a blanco */
+            color: #000;
         }
         .popup-content button:hover {
             background: #e40b0b;
         }
         .reject {
             background: #ccc;
-            color: #fff; /* Cambié de negro a blanco */
+            color: #ffffff;
         }
         .reject:hover {
             background: #999;
@@ -138,7 +139,7 @@
         <h1>Política de Refill</h1>
         <p>Consulta nuestras políticas de refill para más información.</p>
 
-        <div id="pdf-links" style="display:none;">
+        <div id="pdf-links">
             <a href="https://drive.google.com/file/d/1AtXs8vuTLZLbP2VFZTMLdW0iXdi3-Llg/view?usp=sharing" target="_blank">Refill T2</a>
             <a href="https://drive.google.com/file/d/1SfTbPhCgzQHyTsIhPvndAFGMcOVQEN_m/view?usp=sharing" target="_blank">Vinilo Fino</a>
             <a href="https://drive.google.com/file/d/1hwWfMHgSiYMidlqatT8gNzWOYyIkb_Xo/view?usp=sharing" target="_blank">Vinilo Básico T1</a>
@@ -162,13 +163,13 @@
                 <input type="text" id="cantidad" placeholder="Cantidad" required>
 
                 <label class="checkbox-label">
-                    <input type="checkbox" id="cookies-accept" onchange="togglePDFLink()"> 
+                    <input type="checkbox" id="cookies-accept" onchange="togglePDFLinks()"> 
                     Acepto el uso de cookies según nuestra 
                     <a href="https://docs.google.com/document/d/1y-UOpVcJoe0Y15vimi9ixdbkx5S-FqAu/view" target="_blank">Política De Cookies</a>
                 </label>
                 <br>
                 <label class="checkbox-label">
-                    <input type="checkbox" id="refill-accept" onchange="togglePDFLink()"> 
+                    <input type="checkbox" id="refill-accept" onchange="togglePDFLinks()"> 
                     Acepto el uso según nuestra 
                     <a href="https://docs.google.com/document/d/1e3DSTyVgJwu4U9DZPcp3JIuVhd1v-jQ5/edit?usp=sharing&ouid=105575938843934985702&rtpof=true&sd=true" target="_blank">Política De Refill</a>
                 </label>
@@ -184,14 +185,17 @@
             document.getElementById("popup").style.display = "flex";
         }
 
+        // Cambié el nombre de la función aquí
         function togglePDFLinks() {
-            const checkBox = document.getElementById("cookies-accept");
+            const cookiesCheckBox = document.getElementById("cookies-accept");
+            const refillCheckBox = document.getElementById("refill-accept");
             const pdfLinks = document.getElementById("pdf-links");
 
-            if (checkBox.checked) {
-                pdfLinks.style.display = "block";
+            // Verifica si ambos checkboxes están marcados
+            if (cookiesCheckBox.checked && refillCheckBox.checked) {
+                pdfLinks.style.display = "block";  // Muestra los enlaces cuando ambos están seleccionados
             } else {
-                pdfLinks.style.display = "none";
+                pdfLinks.style.display = "none";  // Los oculta si no están ambos seleccionados
             }
         }
 
