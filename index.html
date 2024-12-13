@@ -100,14 +100,14 @@
             font-size: 1em;
             transition: background-color 0.3s;
             background-color: #e40b0b;
-            color: #000;
+            color: #ffffff; /* Texto blanco */
         }
         .popup-content button:hover {
-            background: #e40b0b;
+            background: #c10000;
         }
         .reject {
             background: #ccc;
-            color: #ffffff;
+            color: #ffffff; /* Texto blanco */
         }
         .reject:hover {
             background: #999;
@@ -185,7 +185,6 @@
             document.getElementById("popup").style.display = "flex";
         }
 
-        // Cambié el nombre de la función aquí
         function togglePDFLinks() {
             const cookiesCheckBox = document.getElementById("cookies-accept");
             const refillCheckBox = document.getElementById("refill-accept");
